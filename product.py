@@ -1,3 +1,10 @@
+#讀取檔案
+
+with open('product.csv', 'r', encoding = 'utf-8') as d:
+	for line in d:
+		name, price = line.strip().split(',')
+		print(name, price)
+#輸入檔案
 i = 0
 product = []
 while True:
@@ -20,7 +27,8 @@ for p in product:
 print('你總共買了', product)
 print('總共是', i, '元')
 
-with open('product.txt', 'w') as d:
+with open('product.csv', 'w', encoding = 'utf-8') as d:
+	d.write('商品' + ',' + '價格' + '\n')
 	for p in product:
 		d.write(p[0] + ',' + p[1] + '\n')
 
