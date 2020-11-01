@@ -3,12 +3,11 @@ product = []
 
 with open('product.csv', 'r', encoding = 'utf-8') as f:
 	for line in f :
-		name, price = line.strip().split(',')
+		if '商品,價格' in line :
+			continue # 等於skip掉商品價格這一欄
+		name, price = line.strip().split(',') #strip忽略換行 split（','）用逗號切割
 		product.append([name, price])
-
-
-print(product)
-
+print('你目前已經買了：', product)
 
 #輸入檔案
 i = 0
@@ -29,7 +28,7 @@ while True:
 for p in product:
 	print(p[0], '的價格是', p[1])
 
-print('你總共買了', product)
+print('你這次總共買了', product)
 print('總共是', i, '元')
 
 with open('product.csv', 'w', encoding = 'utf-8') as d:
